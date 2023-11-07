@@ -1,0 +1,27 @@
+{
+  "name": "cypress-self-demo1",
+  "version": "1.0.0",
+  "description": "self test",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BrijeshChandra7/cypress-demo1.git"
+  },
+  "keywords": [
+    "cypress",
+    "test",
+    "e2e"
+  ],
+  "author": "Brijesh Chandra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrijeshChandra7/cypress-demo1/issues"
+  },
+  "homepage": "https://github.com/BrijeshChandra7/cypress-demo1#readme",
+  "devDependencies": {
+    "cypress": "^13.4.0"
+  }
+}
