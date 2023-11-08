@@ -25,31 +25,30 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import login from "../fixtures/login";
 
-Cypress.Commands.add('login',(username , password)=>{
-    cy.session([username,password],function () {
-            cy.visit('/');
-            cy.get(login.txtUserName).clear().type(username);
-            cy.get(login.txtPassword).clear().type(password);
-            cy.get(login.btnlogin).click();
-        })
-}
-)
-Cypress.Commands.add('clickElement',(selector)=>{
-    cy.get(selector).click();
-})
+Cypress.Commands.add("login", (username, password) => {
+  cy.session([username, password], function () {
+    cy.visit("/");
+    cy.get(login.txtUserName).clear().type(username);
+    cy.get(login.txtPassword).clear().type(password);
+    cy.get(login.btnlogin).click();
+  });
+});
+Cypress.Commands.add("clickElement", (selector) => {
+  cy.get(selector).click();
+});
 
-Cypress.Commands.add('enterText',(selector,text)=>{
-    cy.get(selector).clear().type(text);
-})
+Cypress.Commands.add("enterText", (selector, text) => {
+  cy.get(selector).clear().type(text);
+});
 
-Cypress.Commands.add('assertElementVisiblity',(selector)=>{
-    cy.get(selector).should('be.visible');
-})
+Cypress.Commands.add("assertElementVisiblity", (selector) => {
+  cy.get(selector).should("be.visible");
+});
 
-Cypress.Commands.add('selectDrop',(selector,drop)=>{
-    cy.get(selector).select(drop);
-})
+Cypress.Commands.add("selectDrop", (selector, drop) => {
+  cy.get(selector).select(drop, { force: true });
+});
 
-Cypress.Commands.add('verifyElementText',(selector,text)=>{
-    cy.get(selector).should('contain',text);
-})
+Cypress.Commands.add("verifyElementText", (selector, text) => {
+  cy.get(selector).should("contain", text);
+});

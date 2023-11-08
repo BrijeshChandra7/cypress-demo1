@@ -1,0 +1,13 @@
+{
+  "FirstName": "Sri",
+  "LastName": "Kant",
+  "Email": "yahoo@yahoo.com",
+  "DOB": "11/7/2023",
+  "CompName": "Xmas",
+  "AdminComment": "This is being tested",
+  "Gender": "Female",
+  "Newsletter": "Test store 2",
+  "CustRoles": "Guests",
+  "ManagerOfVendors": "Vendor 2",
+  "Password": "Password"
+}
