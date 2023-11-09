@@ -98,7 +98,7 @@ class Customers {
   }
 
   enterAdminComment(comment) {
-    cy.assertElementVisiblity(this.txtAdminComment);
+    cy.assertElementVisibility(this.txtAdminComment);
     cy.enterText(this.txtAdminComment, comment);
   }
 

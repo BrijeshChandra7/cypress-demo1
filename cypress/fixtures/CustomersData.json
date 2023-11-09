@@ -9,5 +9,9 @@
   "Newsletter": "Test store 2",
   "CustRoles": "Guests",
   "ManagerOfVendors": "Vendor 2",
-  "Password": "Password"
+  "Password": "Password",
+  "Name" : "TestPro",
+  "VendorsAddPageTitle" : "Add a new vendor",
+  "Desc" : "Hello world! Let's play the game."
+
 }

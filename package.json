@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/BrijeshChandra7/cypress-demo1#readme",
   "devDependencies": {
-    "cypress": "^13.4.0"
+    "cypress": "^13.4.0",
+    "cypress-file-upload": "^5.0.8",
+    "cypress-iframe": "^1.0.1"
   }
 }

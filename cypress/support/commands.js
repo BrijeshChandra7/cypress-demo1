@@ -23,7 +23,11 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+// Import commands.js using ES2015 syntax:
+import './commands';
 import login from "../fixtures/login";
+import 'cypress-iframe';
+import 'cypress-file-upload';
 
 Cypress.Commands.add("login", (username, password) => {
   cy.session([username, password], function () {
@@ -41,7 +45,7 @@ Cypress.Commands.add("enterText", (selector, text) => {
   cy.get(selector).clear().type(text);
 });
 
-Cypress.Commands.add("assertElementVisiblity", (selector) => {
+Cypress.Commands.add("assertElementVisibility", (selector) => {
   cy.get(selector).should("be.visible");
 });
 
