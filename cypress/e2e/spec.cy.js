@@ -208,6 +208,8 @@ CustomerRoles.clickOnAdd(); */
       Vendors.enterMetaKeywords(data.MetaKeywords);
       Vendors.enterMetaDescription(data.MetaDesc);
       Vendors.clickOnSave();
+      cy.wait(2000);
+      cy.logout();
     });
   });
 });

@@ -56,3 +56,7 @@ Cypress.Commands.add("selectDrop", (selector, drop) => {
 Cypress.Commands.add("verifyElementText", (selector, text) => {
   cy.get(selector).should("contain", text);
 });
+
+Cypress.Commands.add('logout',()=>{
+  cy.get(login.btnlogout).click();
+})
