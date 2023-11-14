@@ -38,11 +38,11 @@ Cypress.Commands.add("login", (username, password) => {
   });
 });
 Cypress.Commands.add("clickElement", (selector) => {
-  cy.get(selector).click();
+  cy.get(selector).click({force: true});
 });
 
 Cypress.Commands.add("enterText", (selector, text) => {
-  cy.get(selector).clear().type(text);
+  cy.get(selector).clear().type(text,{force: true});
 });
 
 Cypress.Commands.add("assertElementVisibility", (selector) => {

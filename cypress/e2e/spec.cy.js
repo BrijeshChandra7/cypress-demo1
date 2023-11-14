@@ -83,7 +83,7 @@ describe("template spec", () => {
       CustomerRoles.enterName(data.Name);
       // Click the button to open the new window
       //CustomerRoles.clickOnChooseProduct();
-/*
+      /*
       // Capture a reference to the new window
       let newWindow;
       cy.window().then((win) => {
@@ -107,8 +107,7 @@ describe("template spec", () => {
       // Assert or validate results in the original window
       cy.get("span#purchased-with-product-name").should("have.text", "Apple MacBook Pro 13-inch"); */
       //cy.visit('https://admin-demo.nopcommerce.com/Admin/CustomerRole/AssociateProductToCustomerRolePopup?productIdInput=PurchasedWithProductId&productNameInput=purchased-with-product-name&btnId=btnRefreshPurchasedWithProduct');
-      
-      
+
       //cy.get("tbody tr:nth-child(4) td:nth-child(1) button:nth-child(1)").click();
       //cy.wait(10000);
       // Get window object
@@ -138,63 +137,77 @@ cy.get('.nav-pills > :nth-child(4) > [href="#"]').trigger('mouseover').click();
 Dashboard.selectMenu("Customers");
 Customers.openMenu(" Customer roles");
 Customers.verifyCustomersPageTitle("Customer roles");
-CustomerRoles.clickOnAdd(); */  
-const url = "https://admin-demo.nopcommerce.com/Admin/CustomerRole/AssociateProductToCustomerRolePopup?productIdInput=PurchasedWithProductId&productNameInput=purchased-with-product-name&btnId=btnRefreshPurchasedWithProduct";
+CustomerRoles.clickOnAdd(); */
+      const url =
+        "https://admin-demo.nopcommerce.com/Admin/CustomerRole/AssociateProductToCustomerRolePopup?productIdInput=PurchasedWithProductId&productNameInput=purchased-with-product-name&btnId=btnRefreshPurchasedWithProduct";
 
-// Define a variable to store the original window handle
-let originalWindowHandle;
+      // Define a variable to store the original window handle
+      let originalWindowHandle;
 
-cy.window().then((win) => {
-  // Store the handle of the original window
-  originalWindowHandle = win;
+      cy.window().then((win) => {
+        // Store the handle of the original window
+        originalWindowHandle = win;
 
-  // Replace window.open(url, target)-function with our own arrow function
-  cy.stub(win, 'open', url => {
-    // change window location to be same as the popup url
-    win.location.href = url;
-  }).as("popup"); // alias it with popup, so we can wait and refer to it with @popup
-});
+        // Replace window.open(url, target)-function with our own arrow function
+        cy.stub(win, "open", (url) => {
+          // change window location to be same as the popup url
+          win.location.href = url;
+        }).as("popup"); // alias it with popup, so we can wait and refer to it with @popup
+      });
 
-// Click the button which triggers javascript's window.open() call
-CustomerRoles.clickOnChooseProduct();
-cy.get("tbody tr:nth-child(4) td:nth-child(1) button:nth-child(1)").click();
+      // Click the button which triggers javascript's window.open() call
+      CustomerRoles.clickOnChooseProduct();
+      cy.get(
+        "tbody tr:nth-child(4) td:nth-child(1) button:nth-child(1)"
+      ).click();
 
-// Make sure that it triggered window.open function call
-cy.get("@popup").should("be.called");
+      // Make sure that it triggered window.open function call
+      cy.get("@popup").should("be.called");
 
-// After waiting for some time, switch back to the original window
-cy.wait(2000).then(() => {
-  cy.window().then((win) => {
-    // Close the new window
-    win.close();
-  });
+      // After waiting for some time, switch back to the original window
+      cy.wait(2000).then(() => {
+        cy.window().then((win) => {
+          // Close the new window
+          win.close();
+        });
 
-  // Switch back to the original window
-  cy.window(originalWindowHandle);
+        // Switch back to the original window
+        cy.window(originalWindowHandle);
 
-  // Now you are back in the original window
-  // You can perform assertions here to check if the product is populated
-  // on the original page
-  cy.get("span#purchased-with-product-name").should("have.text", "Apple MacBook Pro 13-inch");
-});
-
+        // Now you are back in the original window
+        // You can perform assertions here to check if the product is populated
+        // on the original page
+        cy.get("span#purchased-with-product-name").should(
+          "have.text",
+          "Apple MacBook Pro 13-inch"
+        );
+      });
     });
   });
 
-  it('Vendors',()=>{
+  it("Vendors", () => {
     Customers.openMenu("Vendors");
     Customers.verifyCustomersPageTitle("Vendors");
-    Vendors.verifyPageTitle('Vendors');
+    Vendors.verifyPageTitle("Vendors");
     Vendors.clickOnAdd();
-    cy.get('@Data').then((data)=>{
+    cy.get("@Data").then((data) => {
       Vendors.verifyAddPageTitle(data.VendorsAddPageTitle);
       Vendors.enterDescription(data.Desc);
       Vendors.enterName(data.Name);
       Vendors.enterEmail(data.Email);
-      Vendors.uploadPicture('test_picture.jpg');
-      Vendors.verifyUploadedPic('test_picture.jpg');
+      Vendors.uploadPicture("test_picture.jpg");
+      Vendors.verifyUploadedPic("test_picture.jpg");
       Vendors.enterAdminComment(data.AdminComment);
-    })
-
-  })
+      Vendors.openDisplay();
+      Vendors.enterPriceFrom(100);
+      Vendors.enterPriceTo(105);
+      Vendors.enterDisplayOrder(0);
+      Vendors.openSeo();
+      Vendors.enterSEFriendlypgName(data.FriendlyPageName);
+      Vendors.enterMetaTitle(data.MetaTitle);
+      Vendors.enterMetaKeywords(data.MetaKeywords);
+      Vendors.enterMetaDescription(data.MetaDesc);
+      Vendors.clickOnSave();
+    });
+  });
 });
